@@ -1,0 +1,52 @@
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 138
+Server version: 10.4.11-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use mysql;
+Database changed
+MariaDB [mysql]> create database akademik;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [mysql]> use akademik;
+Database changed
+MariaDB [akademik]> create table mahasiswa
+    -> (nim varchar(5) primary key,
+    -> nama varchar(50),
+    -> jkel varchar(1),
+    -> alamat text,
+    -> tgllhr date);
+Query OK, 0 rows affected (0.089 sec)
+
+MariaDB [akademik]> insert into mahasiswa values
+    -> ('MHS01', 'Siti Aminah', 'P', 'SOLO', '1995-10-01'),
+    -> ('MHS02', 'Rita', 'P', 'SOLO', '1999-01-01'),
+    -> ('MHS03', 'Amirudin', 'L', 'SEMARANG', '1998-08-11'),
+    -> ('MHS04', 'Siti Maryam', 'P', 'JAKARTA', '1995-04-15');
+Query OK, 4 rows affected (0.043 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [akademik]> select * from mahasiswa;
++-------+-------------+------+----------+------------+
+| nim   | nama        | jkel | alamat   | tgllhr     |
++-------+-------------+------+----------+------------+
+| MHS01 | Siti Aminah | P    | SOLO     | 1995-10-01 |
+| MHS02 | Rita        | P    | SOLO     | 1999-01-01 |
+| MHS03 | Amirudin    | L    | SEMARANG | 1998-08-11 |
+| MHS04 | Siti Maryam | P    | JAKARTA  | 1995-04-15 |
++-------+-------------+------+----------+------------+
+4 rows in set (0.000 sec)
+
+MariaDB [akademik]> select * from mahasiswa where alamat='SOLO';
++-------+-------------+------+--------+------------+
+| nim   | nama        | jkel | alamat | tgllhr     |
++-------+-------------+------+--------+------------+
+| MHS01 | Siti Aminah | P    | SOLO   | 1995-10-01 |
+| MHS02 | Rita        | P    | SOLO   | 1999-01-01 |
++-------+-------------+------+--------+------------+
+2 rows in set (0.000 sec)
